@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailuserbar %}
+
+{% block content %}
+
+    {% block hero_header %}
+        <div class="new-hero-header">
+        {% block hero_content %}
+            Header
+        {% endblock hero_content %}
+        </div>
+    {% endblock hero_header %}
+
+    {% block inner_content %}
+        <div class="">
+            <div class="margin-top-5vh flex-down">
+
+            {% block deep_content %}{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}
