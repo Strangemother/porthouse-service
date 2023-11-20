@@ -11,3 +11,4 @@ class Subscription(models.Model):
     # permissions
 
     created, updated = fields.dt_cu_pair()
+
