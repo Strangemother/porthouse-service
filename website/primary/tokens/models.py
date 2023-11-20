@@ -4,8 +4,9 @@ from trim.models import fields, get_model
 
 class Token(models.Model):
 
-    _trim_string = 'Token "{self.value}" for {self.owner}'
+    _trim_string = 'Token slug="{self.slug}" for {self.owner}'
 
+    slug = fields.str_uuid()
     owner = fields.user_fk(nil=True)
     value = fields.str_uuid()
     max_connections = fields.pos_int(default=10)
