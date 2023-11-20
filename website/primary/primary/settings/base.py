@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    # "daphne",
     "home",
     "search",
     "account",
@@ -63,6 +64,8 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
+
+ASGI_APPLICATION = "primary.asgi.application"
 
 ROOT_URLCONF = "primary.urls"
 
