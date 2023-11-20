@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load link quickforms %}
+
+{% block content %}
+
+    <h1>Delete Token</h1>
+
+    {% link "tokens:list" 'All Tokens' %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+    </form>
+
+{% endblock content %}

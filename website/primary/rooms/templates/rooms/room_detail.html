@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load link %}
+
+{% block content %}
+
+    <h1>Room {{ object.name }}</h1>
+
+    {% link "rooms:list" 'All Rooms' %}
+
+    <div>
+        {{ object }}
+    </div>
+
+    <div>
+        <h2>subscriptions</h2>
+        <ul>
+            {% for sub in object.subscription_set.all %}
+            <li>
+                {{ sub }}
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% link "rooms:delete" object.slug 'delete' %}
+
+{% endblock content %}

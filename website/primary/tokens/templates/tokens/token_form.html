@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load link quickforms %}
+
+{% block content %}
+
+    <h1>Create a Token</h1>
+
+    {% link "tokens:list" 'All tokens' %}
+
+    <div>
+        <form method="POST">
+        {{ form.as_ul }}
+        {% csrf_token %}
+        <button type="submit">Submit</button>
+        </form>
+    </div>
+
+{% endblock content %}

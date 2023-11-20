@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load link %}
+{% block content %}
+
+{% link "rooms:create" 'create' %}
+
+<ul>
+    {% for item in object_list %}
+        <li>
+            {% link "rooms:detail" item.slug item.name %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

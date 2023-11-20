@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Your Token</h1>
+{% load link %}
+
+{% link "tokens:list" 'All Tokens' %}
+
+<div>
+{{ object }}
+</div>
+
+<div>
+    <h2>Token</h2>
+    <p>keep this safe and secret.</p>
+    <pre>{{ object.value }}</pre>
+</div>
+
+<div>
+    <h2>Subscriptions</h2>
+    {% link "tokens:subscribe" object.slug 'add room' %}
+    <ul>
+        {% for item in object.subscription_set.all %}
+            <li>{{ item.room }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% link "tokens:delete" object.slug 'delete' %}
+
+{% endblock content %}

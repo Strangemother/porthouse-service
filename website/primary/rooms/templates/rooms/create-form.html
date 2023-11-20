@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load link quickforms %}
+
+{% block content %}
+
+    <h1>Create Room</h1>
+
+    {% link "rooms:list" 'All Rooms' %}
+
+    <div>
+        {% quickform.form "rooms:create" %}
+    </div>
+
+{% endblock content %}
