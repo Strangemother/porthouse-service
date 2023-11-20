@@ -5,6 +5,7 @@ from trim.models import fields, get_model
 class Room(models.Model):
     _trim_string = '{self.name} by {self.owner}'
 
+    slug = fields.str_uuid()
     owner = fields.user_fk(nil=True)
     name = fields.str(max_length=255)
     max_connections = fields.pos_int(default=50)
