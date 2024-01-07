@@ -29,7 +29,21 @@ class JSONResponseContent(object):
 
 
 class ApplicationHeaderJSONSwitchMixin(JSONResponseContent):
+    """An 'application header' switch to detech when the _json_
+    content is applex. When the `is_ajax_request` returns True,
+    the return is JSON, else the response defaults to the standard GET or
+    POST view.
 
+    Apply to the view accepting an optional JSON request:
+
+        class TokenDetailView(ApplicationHeaderJSONSwitchMixin, views.DetailView):
+            model = models.Token
+
+            def as_json_data(self, context, **response_kwargs):
+                return {
+                    "token": context['object'].value
+                }
+    """
     def render_to_response(self, context, **response_kwargs):
         if self.is_ajax_request():
             return self.render_to_json_response(context, **response_kwargs)

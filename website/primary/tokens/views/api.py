@@ -1,6 +1,6 @@
 from trim import views
 
-from . import models, forms
+from .. import models, forms
 from trim import get_model
 
 import uuid
@@ -12,10 +12,16 @@ from django.http import JsonResponse
 from .json_mixin import JSONResponseContent
 
 
-CSRFTOKENS = set()
+# CSRFTOKENS = set()
+from .token_cache import CSRFTOKENS
 
 @method_decorator(csrf_exempt, name='dispatch')
 class TokenInfoFormView(JSONResponseContent, views.FormView):
+    """Token information through an endpoint, validated through a POST
+    including the post_token and user 'token'.
+
+    CSRF Exempt
+    """
     model = models.Token
     form_class = forms.TokenExistsForm
     template_name = 'tokens/token_form.html'
